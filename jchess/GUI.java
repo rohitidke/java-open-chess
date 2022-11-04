@@ -102,9 +102,11 @@ public class GUI
         Properties defConfFile = new Properties();
         Properties confFile = new Properties();
         File outFile = new File(GUI.getJarPath() + File.separator + "config.txt");
+        System.out.println(outFile);
         try
         {
             defConfFile.load(GUI.class.getResourceAsStream("config.txt"));
+            System.out.println("inside getResourceAsStream");
         }
         catch (java.io.IOException exc)
         {
@@ -116,6 +118,7 @@ public class GUI
             try
             {
                 defConfFile.store(new FileOutputStream(outFile), null);
+                System.out.println("Inside file doesnt exist");
             }
             catch (java.io.IOException exc)
             {
@@ -124,10 +127,12 @@ public class GUI
         try
         {   
             confFile.load(new FileInputStream("config.txt"));
+            System.out.println("Inside file load");
         }
         catch (java.io.IOException exc)
         {
         }
+        System.out.println("config file is"+ confFile);
         return confFile;
     }
 }
